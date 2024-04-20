@@ -1,3 +1,18 @@
+Metadata-Version: 2.1
+Name: aec6s
+Version: 0.0.1
+Summary: Adjacency-effect correction following the Vermote et al. 1997 approach
+Author: Yulun Wu
+Author-email: yulunwu8@gmail.com
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: scipy
+Requires-Dist: pandas
+Requires-Dist: numpy
+Requires-Dist: netCDF4
+
 # Adjacency-effect-correction-6S
  
 Based on Vermote et al. 1997
