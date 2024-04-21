@@ -4,3 +4,6 @@ readme.docx
 tests/test_private.py
 /aec6s/__pycache__
 /aec6s/__pycache__
+/build
+/aec6s.egg-info
+/dist
