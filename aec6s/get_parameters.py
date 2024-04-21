@@ -1,13 +1,9 @@
-
-
-
 # get AEC parameters for each band 
 
 def get_parameters(metadata, anci, AEC_band_6S):
     
     import numpy as np
     from scipy.interpolate import interp1d
-    
     
     # 6S calculate: upward diffuse transmittances and dif2dir ratio 
     info_6S = run_6S(metadata, anci, AEC_band_6S)
@@ -19,8 +15,7 @@ def get_parameters(metadata, anci, AEC_band_6S):
     # Diffuse to direct ratio 
     dif2dir = info_6S['dif2dir']
     
-    
-    # construct 1km by 1km PSF
+    ### construct 1km by 1km PSF
     
     # hard code the size of PSF for now 
     PSF_length = 1000 # in unit of meter
@@ -34,7 +29,6 @@ def get_parameters(metadata, anci, AEC_band_6S):
 
     # Calculate the weight of each band
     weights = np.diff(F_r_values, prepend=0)  
-
 
     ### Normalize by area 
     circle_areas = np.pi * r_values ** 2
@@ -54,7 +48,6 @@ def get_parameters(metadata, anci, AEC_band_6S):
     size = round_up_to_odd(PSF_length/pixel_size)
     center = size // 2  # The central point (50, 50)
 
-
     # Create meshgrid for coordinates
     x = np.arange(size)
     y = np.arange(size)
@@ -63,7 +56,6 @@ def get_parameters(metadata, anci, AEC_band_6S):
     # Calculate the distance from the center for each pixel
     distances = np.sqrt((xx - center)**2 + (yy - center)**2) * pixel_size
     clipped_distances = np.clip(distances, np.min(r_values), np.max(r_values)) # make sure no extrapolation 
-
 
     # Apply interpolation to distances to get weights for each pixel
     interpolated_weights = interpolator(clipped_distances)
@@ -76,8 +68,6 @@ def get_parameters(metadata, anci, AEC_band_6S):
 
     return AEC_parameters
 
-    
-    
 # Define the function F_r(r)
 def F_r(radius, t_Rayleigh, t_Aerosol):
     import numpy as np
@@ -95,6 +85,7 @@ def F_r(radius, t_Rayleigh, t_Aerosol):
 
 def round_up_to_odd(num):
     import math
+    
     # Round the number up to the nearest integer
     rounded = math.ceil(num)
     
@@ -107,9 +98,9 @@ def round_up_to_odd(num):
 
 
 def run_6S(metadata, anci, AEC_band_6S):
-    
     import Py6S
     
+    # 6S object
     s = Py6S.SixS()
     
     # geometry
@@ -153,4 +144,3 @@ def run_6S(metadata, anci, AEC_band_6S):
     
     return info_6S
     
-

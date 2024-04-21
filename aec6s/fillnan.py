@@ -1,5 +1,4 @@
 
-
 # Source: https://github.com/acolite/acolite/blob/main/acolite/shared/fillnan.py
 
 def fillnan(data):
