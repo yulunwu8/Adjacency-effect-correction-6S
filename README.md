@@ -38,6 +38,6 @@ pip3 install aec6s
 
 
 
+Input has to be ACOLITE L2R files 
 
-
-
+It is recommended to use subscene processing in ACOLITE to reduce processing the processing time
