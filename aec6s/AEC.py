@@ -41,6 +41,9 @@ def AEC(metadata, anci):
         
         output = image + dif2dir * (image - image_conv)
         
+        # add nan back
+        output[is_nan] = np.nan
+        
         # Modify L2R NC file 
         dset[ACOLITE_band][:] = output
         

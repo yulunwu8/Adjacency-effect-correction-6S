@@ -5,7 +5,7 @@ with open("readme.md", "r") as fh:
 
 setup(
     name='aec6s',
-    version='1.0.0',
+    version='1.0.1',
     author='Yulun Wu',
     author_email='yulunwu8@gmail.com',
     description='Adjacency-effect correction following the Vermote et al. 1997 approach',

@@ -59,11 +59,27 @@ def get_parameters(metadata, anci, AEC_band_6S):
 
     # Apply interpolation to distances to get weights for each pixel
     interpolated_weights = interpolator(clipped_distances)
-
-    # Normalize to 1
-    PSF = interpolated_weights / np.sum(interpolated_weights)
     
-    AEC_parameters = {'PSF':PSF,
+    ### Normalize to 1
+    PSF = interpolated_weights.copy()
+    
+    # Find the central pixel coordinates
+    center_row = PSF.shape[0] // 2
+    center_col = PSF.shape[1] // 2
+    
+    # Store the value of the central pixel
+    center_value = PSF[center_row, center_col]
+    
+    # Calculate the sum of all elements in the array and subtract the central pixel value
+    adjusted_sum = PSF.sum() - center_value
+    
+    # Normalize the array
+    normalized_array = PSF / adjusted_sum * (1-center_value)
+    
+    # Add back the central pixel value
+    normalized_array[center_row, center_col] = center_value
+
+    AEC_parameters = {'PSF':normalized_array,
                       'dif2dir':dif2dir}
 
     return AEC_parameters

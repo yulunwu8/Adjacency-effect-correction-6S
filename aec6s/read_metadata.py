@@ -101,6 +101,7 @@ def read_metadata(file):
         metadata['AEC_bands_wl'] = [442.81, 481.89, 560.95, 654.32, 864.64, 1608.15, 2200.12]
         
         # Add ACOLITE_bands!!! 
+        sys.exit('Missing L9 OLI bands for ACOLITE, contact Yulun at yulunwu8@gmail.com')
         
     else:
         sys.exit('Unknown sensor.')
