@@ -1,6 +1,6 @@
 # Adjacency-effect-correction-6S
  
-This *aec6s* project implements the Vermote et al. (1997) approach to correct for the adjacency effect, utilizing the setup in Martins et al. (2018). This tool was designed specifically for ACOLITE output L2R files.
+This *aec6s* project implements the Vermote et al. (1997) approach to correct for the adjacency effect, utilizing the parameterizations in Martins et al. (2018). This tool was designed specifically for ACOLITE output L2R files.
 
 It is recommended to use subscene processing in ACOLITE to reduce the processing time of *aec6s*.
 
